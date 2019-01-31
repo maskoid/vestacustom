@@ -3,6 +3,7 @@
 yum -y update
 yum -y install wget
 yum -y install nano
+yum -y install yum-changelog
 cd /etc/yum.repos.d && curl https://raw.githubusercontent.com/maskoid/vestacustom/master/yum.repos.d/MariaDB.repo -o MariaDB.repo
 cd /etc/yum.repos.d && curl https://raw.githubusercontent.com/maskoid/vestacustom/master/yum.repos.d/nginx.repo -o nginx.repo
 cd /etc/yum.repos.d && curl https://raw.githubusercontent.com/maskoid/vestacustom/master/yum.repos.d/vesta.repo -o vesta.repo
