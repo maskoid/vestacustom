@@ -446,39 +446,7 @@ fi
 #                   Install repository                     #
 #----------------------------------------------------------#
 
-# Updating system
-yum -y update
-check_result $? 'yum update failed'
-
-# Installing EPEL repository
-yum install epel-release -y
-check_result $? "Can't install EPEL repository"
-
-# Installing Remi repository
-if [ "$remi" = 'yes' ] && [ ! -e "/etc/yum.repos.d/remi.repo" ]; then
-    rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-$release.rpm
-    check_result $? "Can't install REMI repository"
-    sed -i "s/enabled=0/enabled=1/g" /etc/yum.repos.d/remi.repo
-fi
-
-# Installing Nginx repository
-nrepo="/etc/yum.repos.d/nginx.repo"
-echo "[nginx]" > $nrepo
-echo "name=nginx repo" >> $nrepo
-echo "baseurl=http://nginx.org/packages/centos/$release/\$basearch/" >> $nrepo
-echo "gpgcheck=0" >> $nrepo
-echo "enabled=1" >> $nrepo
-
-# Installing Vesta repository
-vrepo='/etc/yum.repos.d/vesta.repo'
-echo "[vesta]" > $vrepo
-echo "name=Vesta - $REPO" >> $vrepo
-echo "baseurl=http://$RHOST/$REPO/$release/\$basearch/" >> $vrepo
-echo "enabled=1" >> $vrepo
-echo "gpgcheck=1" >> $vrepo
-echo "gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-VESTA" >> $vrepo
-echo "exclude=httpd* mod_ssl*" >> $vrepo
-wget c.vestacp.com/GPG.txt -O /etc/pki/rpm-gpg/RPM-GPG-KEY-VESTA
+# All repos are removed by Azad
 
 
 #----------------------------------------------------------#
@@ -1204,7 +1172,7 @@ if [ "$exim" = 'yes' ] && [ "$mysql" = 'yes' ]; then
     chmod -f 777 /var/log/roundcubemail
     r="$(gen_pass)"
     mysql -e "CREATE DATABASE roundcube"
-    mysql -e "GRANT ALL ON roundcube.* TO
+    mysql -e "GRANT ALL ON roundcube.* TO 
             roundcube@localhost IDENTIFIED BY '$r'"
     sed -i "s/%password%/$r/g" /etc/roundcubemail/config.inc.php
     chmod 640 /etc/roundcubemail/config.inc.php
