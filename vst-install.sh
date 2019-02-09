@@ -42,7 +42,7 @@ if [ $type != rhel ]; then
     echo 'This Custom Installation Script works with Centos and RHEL OS only'
     exit
     else
-      curl -O http://vestacp.com/pub/vst-install-rhel.sh
+      curl -O https://raw.githubusercontent.com/maskoid/vestacustom/master/vst-install-rhel.sh
         if [ "$?" -eq '0' ]; then
         bash vst-install-rhel.sh $*
         exit
