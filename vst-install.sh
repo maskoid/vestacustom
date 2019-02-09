@@ -1,22 +1,46 @@
 #!/bin/bash
 # Centos Server Setup by Maskoid
-yum -y update
-yum -y install wget
-yum -y install nano
-yum -y install yum-changelog
-cd /etc/yum.repos.d && curl https://raw.githubusercontent.com/maskoid/vestacustom/master/yum.repos.d/MariaDB.repo -o MariaDB.repo
-cd /etc/yum.repos.d && curl https://raw.githubusercontent.com/maskoid/vestacustom/master/yum.repos.d/nginx.repo -o nginx.repo
-cd /etc/yum.repos.d && curl https://raw.githubusercontent.com/maskoid/vestacustom/master/yum.repos.d/vesta.repo -o vesta.repo
-wget c.vestacp.com/GPG.txt -O /etc/pki/rpm-gpg/RPM-GPG-KEY-VESTA
-cd /root/
-yum -y update
-yum -y upgrade
-yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-yum -y install https://rpms.remirepo.net/enterprise/remi-release-7.rpm
-yum -y install yum-utils
-yum-config-manager --disable remi-php54
-sudo yum-config-manager --enable remi-php73
-sudo yum-config-manager --enable remi
-yum -y install php-cli php-imap php-process php-pspell php-xml php-xmlrpc php-pdo php-ldap php-pecl-zip php-common php-mcrypt php-mysqlnd php-gmp php-mbstring php-gd php-tidy php-pecl-memcache php-opcache --enablerepo=remi
-yum -y install php56-php-cli php56-php-imap php56-php-process php56-php-pspell php56-php-xml php56-php-xmlrpc php56-php-pdo php56-php-ldap php56-php-pecl-zip php56-php-common php56-php-mcrypt php56-php-mysqlnd php56-php-gmp php56-php-mbstring php56-php-gd php56-php-tidy php56-php-pecl-memcache php56-php-opcache --enablerepo=remi
-curl https://raw.githubusercontent.com/maskoid/vestacustom/master/vst-install.sh -o vst-install.sh
+
+# Am I root?
+if [ "x$(id -u)" != 'x0' ]; then
+    echo 'Error: this script can only be executed by root'
+    exit 1
+fi
+
+
+# Check admin user account
+if [ ! -z "$(grep ^admin: /etc/passwd)" ] && [ -z "$1" ]; then
+    echo "Error: user admin exists"
+    echo
+    echo 'Please remove admin user before proceeding.'
+    echo 'If you want to do it automatically run installer with -f option:'
+    echo "Example: bash $0 --force"
+    exit 1
+fi
+
+
+# Check admin group
+if [ ! -z "$(grep ^admin: /etc/group)" ] && [ -z "$1" ]; then
+    echo "Error: group admin exists"
+    echo
+    echo 'Please remove admin group before proceeding.'
+    echo 'If you want to do it automatically run installer with -f option:'
+    echo "Example: bash $0 --force"
+    exit 1
+fi
+
+# Detect OS
+case $(head -n1 /etc/issue | cut -f 1 -d ' ') in
+    Debian)     type="debian" ;;
+    Ubuntu)     type="ubuntu" ;;
+    Amazon)     type="amazon" ;;
+    *)          type="rhel" ;;
+esac
+
+# Check wget
+if [ $type != rhel ]; then
+    echo 'This Custom Installation Script works with Centos and RHEL OS only'
+    exit
+    else
+      curl -O http://vestacp.com/pub/vst-install-rhel.sh
+fi
