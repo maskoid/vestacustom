@@ -3,7 +3,7 @@ Maskoid Customization of VestaCP
 
 ## Warning
 
-This is for Centos 7. Don't try it if you don't know what it does. Currently in development so things can go ugly. You have been warned!!
+This is for Centos 7. Don't try it if you don't know what it does. Currently in development so things can go ugly. **You have been warned!!**
 
 ## Install Steps
 
