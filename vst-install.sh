@@ -43,4 +43,7 @@ if [ $type != rhel ]; then
     exit
     else
       curl -O http://vestacp.com/pub/vst-install-rhel.sh
+        if [ "$?" -eq '0' ]; then
+        bash vst-install-rhel.sh $*
+        exit
 fi
