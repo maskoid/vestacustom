@@ -42,7 +42,7 @@ case $(head -n1 /etc/issue | cut -f 1 -d ' ') in
 esac
 
 # Check curl
-if [ -e '/usr/bin/curl' ] && [ $type == 'rhel' ]; then
+if [ $type == 'rhel' ]; then
     curl -O https://raw.githubusercontent.com/maskoid/vestacustom/master/vst-install-rhel.sh
     if [ "$?" -eq '0' ]; then
         bash vst-install-$type.sh $*
