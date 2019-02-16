@@ -1,8 +1,10 @@
 #!/bin/bash
 # Solution for "No Internet Connection from VMware"
 #
-### BEGIN INIT INFO
-# Default-Start: 2 3 4 5
-# Default-Stop: 0 1 6
-### END INIT INFO
-dhclient -v
+cd /etc/init.d
+wget https://raw.githubusercontent.com/maskoid/vestacustom/master/scripts/net-autostart
+chmod 755 net-autostart
+chkconfig --add net-autostart
+echo "rebooting in 5 seconds"
+sleep 5
+reboot
