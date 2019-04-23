@@ -9,34 +9,16 @@
 yum -y update
 check_result $? 'yum update failed'
 
-
 yum -y install wget nano yum-changelog
-
-cd /etc/yum.repos.d
-curl https://raw.githubusercontent.com/maskoid/vestacustom/master/yum.repos.d/MariaDB.repo -o MariaDB.repo
-curl https://raw.githubusercontent.com/maskoid/vestacustom/master/yum.repos.d/nginx.repo -o nginx.repo
-
-# Installing Vesta repository
-vrepo='/etc/yum.repos.d/vesta.repo'
-echo "[vesta]" > $vrepo
-echo "name=Vesta - $REPO" >> $vrepo
-echo "baseurl=http://$RHOST/$REPO/$release/\$basearch/" >> $vrepo
-echo "enabled=1" >> $vrepo
-echo "gpgcheck=1" >> $vrepo
-echo "exclude=httpd* mod_ssl*" >> $vrepo
-echo "gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-VESTA" >> $vrepo
-wget c.vestacp.com/GPG.txt -O /etc/pki/rpm-gpg/RPM-GPG-KEY-VESTA
-
-
-cd /root/
-yum -y update
-yum -y upgrade
 
 # Installing EPEL repository
 yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 
 # Installing Remi repository
 yum -y install https://rpms.remirepo.net/enterprise/remi-release-7.rpm
+
+yum -y update
+yum -y upgrade
 
 yum -y install yum-utils
 yum-config-manager --disable remi-php54
@@ -491,7 +473,20 @@ fi
 #----------------------------------------------------------#
 
 
-## Removed by Azad
+cd /etc/yum.repos.d
+curl https://raw.githubusercontent.com/maskoid/vestacustom/master/yum.repos.d/MariaDB.repo -o MariaDB.repo
+curl https://raw.githubusercontent.com/maskoid/vestacustom/master/yum.repos.d/nginx.repo -o nginx.repo
+
+# Installing Vesta repository
+vrepo='/etc/yum.repos.d/vesta.repo'
+echo "[vesta]" > $vrepo
+echo "name=Vesta - $REPO" >> $vrepo
+echo "baseurl=http://$RHOST/$REPO/$release/\$basearch/" >> $vrepo
+echo "enabled=1" >> $vrepo
+echo "gpgcheck=1" >> $vrepo
+echo "exclude=httpd* mod_ssl*" >> $vrepo
+echo "gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-VESTA" >> $vrepo
+wget c.vestacp.com/GPG.txt -O /etc/pki/rpm-gpg/RPM-GPG-KEY-VESTA
 
 #----------------------------------------------------------#
 #                         Backup                           #
