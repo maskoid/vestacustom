@@ -906,6 +906,11 @@ fi
 #----------------------------------------------------------#
 
 if [ "$apache" = 'yes'  ]; then
+    
+    # Edit for Latest Apache
+    mv /etc/httpd/conf.modules.d/10-proxy_h2.conf /etc/httpd/conf.modules.d/10-proxy_h2.conf.maskoid
+    # Edit for Latest Apache - END
+    
     cp -f $vestacp/httpd/httpd.conf /etc/httpd/conf/
     cp -f $vestacp/httpd/status.conf /etc/httpd/conf.d/
     cp -f $vestacp/httpd/ssl.conf /etc/httpd/conf.d/
