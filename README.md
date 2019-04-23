@@ -9,7 +9,7 @@ This is for Centos 7. Don't try it if you don't know what it does. Currently in 
 
 ```
 curl -O https://raw.githubusercontent.com/maskoid/vestacustom/master/vst-install.sh
-bash vst-install.sh
+bash vst-install.sh --nginx yes --apache yes --phpfpm no --named yes --remi yes --vsftpd no --proftpd no --iptables yes --fail2ban yes --quota no --exim yes --dovecot yes --spamassassin yes --clamav yes --softaculous no --mysql yes --postgresql no --hostname servername --email youremail@gmail.com --password yourpass 
 
 ```
 
