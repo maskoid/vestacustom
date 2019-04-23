@@ -5,20 +5,39 @@
 
 #Custom Setup by Maskoid
 
+# Updating system
 yum -y update
-yum -y install wget
-yum -y install nano
-yum -y install yum-changelog
+check_result $? 'yum update failed'
+
+
+yum -y install wget nano yum-changelog
+
 cd /etc/yum.repos.d
 curl https://raw.githubusercontent.com/maskoid/vestacustom/master/yum.repos.d/MariaDB.repo -o MariaDB.repo
 curl https://raw.githubusercontent.com/maskoid/vestacustom/master/yum.repos.d/nginx.repo -o nginx.repo
-curl https://raw.githubusercontent.com/maskoid/vestacustom/master/yum.repos.d/vesta.repo -o vesta.repo
+
+# Installing Vesta repository
+vrepo='/etc/yum.repos.d/vesta.repo'
+echo "[vesta]" > $vrepo
+echo "name=Vesta - $REPO" >> $vrepo
+echo "baseurl=http://$RHOST/$REPO/$release/\$basearch/" >> $vrepo
+echo "enabled=1" >> $vrepo
+echo "gpgcheck=1" >> $vrepo
+echo "exclude=httpd* mod_ssl*" >> $vrepo
+echo "gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-VESTA" >> $vrepo
 wget c.vestacp.com/GPG.txt -O /etc/pki/rpm-gpg/RPM-GPG-KEY-VESTA
+
+
 cd /root/
 yum -y update
 yum -y upgrade
+
+# Installing EPEL repository
 yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+
+# Installing Remi repository
 yum -y install https://rpms.remirepo.net/enterprise/remi-release-7.rpm
+
 yum -y install yum-utils
 yum-config-manager --disable remi-php54
 sudo yum-config-manager --enable remi-php73
@@ -471,7 +490,8 @@ fi
 #                   Install repository                     #
 #----------------------------------------------------------#
 
-# Section removed by Maskoid
+
+## Removed by Azad
 
 #----------------------------------------------------------#
 #                         Backup                           #
@@ -1035,8 +1055,15 @@ if [ "$mysql" = 'yes' ]; then
     if [ "$apache" = 'yes' ]; then
         cp -f $vestacp/pma/phpMyAdmin.conf /etc/httpd/conf.d/
     fi
+    mysql < /usr/share/phpMyAdmin/sql/create_tables.sql
+    p=$(gen_pass)
+    mysql -e "GRANT ALL ON phpmyadmin.*
+        TO phpmyadmin@localhost IDENTIFIED BY '$p'"
     cp -f $vestacp/pma/config.inc.conf /etc/phpMyAdmin/config.inc.php
-    sed -i "s/%blowfish_secret%/$(gen_pass)/g" /etc/phpMyAdmin/config.inc.php
+    sed -i "s/%blowfish_secret%/$(gen_pass 32)/g" /etc/phpMyAdmin/config.inc.php
+    sed -i "s/%phpmyadmin_pass%/$p/g" /etc/phpMyAdmin/config.inc.php
+    chmod 777 /var/lib/phpMyAdmin/temp
+    chmod 777 /var/lib/phpMyAdmin/save
 fi
 
 
