@@ -24,6 +24,6 @@ bash vst-install.sh --nginx yes --apache yes --phpfpm no --named yes --remi yes 
 ```
 
 Credit:
-https://github.com/serghey-rodin/vesta
-https://www.maskoid.com
+* https://github.com/serghey-rodin/vesta
+* https://www.maskoid.com
 
