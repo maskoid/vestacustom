@@ -10,7 +10,7 @@ This is for Centos 7. Don't try it if you don't know what it does. Currently in 
 This will install:
 
 * Latest Apache (2.4.39)
-* Latest nginx
+* Latest nginx (1.16.0)
 * Latest Mariabd (10.3)
 * Latest PHP 7.3
 * It will use remi repo for other applications.
