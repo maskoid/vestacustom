@@ -1,31 +1,23 @@
 # Setup VestaCP Backup with Dropbox
 
-Create App: https://www.dropbox.com/developers/apps
+Create App: https://www.dropbox.com/developers/apps and get Access Token
 
 ```
-cd /
-mkdir dropbox
-cd dropbox
+# To Install
 curl "https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_uploader.sh" -o dropbox_uploader.sh
-chmod +x dropbox_uploader.sh
-./dropbox_uploader.sh
 
-## To Test Upload
+# Provide Access Token
+/dropbox/dropbox_uploader.sh
+Enter your access Token
+# To Test Upload 
 ./dropbox_uploader.sh upload "dropbox_uploader.sh" /
 ```
 
-Script to Upload Backup to Dropbox
-```
-curl "https://raw.githubusercontent.com/maskoid/vestacustom/master/backup/send_site_backup_files_to_dropbox.sh" -o /usr/local/vesta/bin/send_site_backup_files_to_dropbox.sh
+Create Cron Job to run everyday 
 
 ```
-Make it executable.
+sudo /usr/local/vesta/bin/send_site_backup_files_to_dropbox.sh
 ```
-chmod 755 /usr/local/vesta/bin/send_site_backup_files_to_dropbox.sh
-```
-
-
-
 
 ## Credit
 https://github.com/andreafabrizi/Dropbox-Uploader
