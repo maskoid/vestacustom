@@ -35,7 +35,7 @@ backup_all_users() {
 
 if [ "$removeall" = "yes" ]; then
         cd /backup
-        rm -f *
+        rm -rf *
 fi
 
 backup_all_users;
