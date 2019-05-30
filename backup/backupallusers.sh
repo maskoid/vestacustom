@@ -1,6 +1,6 @@
 #!/bin/bash
 # info: backup all users
-# options: [dropbox]
+# options: [ remove dropbox]
 #
 # The function for obtaining the list of system users without
 # detailed information.
@@ -12,6 +12,7 @@
 
 # Argument definition
 dropbox=${1-shell}
+removeall=${2-shell}
 
 # Includes
 source $VESTA/func/main.sh
@@ -31,6 +32,11 @@ backup_all_users() {
 #----------------------------------------------------------#
 #                       Action                             #
 #----------------------------------------------------------#
+
+if [ "$removeall" = "yes" ]; then
+        cd /backup
+        rm -f *
+fi
 
 backup_all_users;
 
