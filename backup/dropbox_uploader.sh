@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#
+# Copy of Original
 # Dropbox Uploader
 #
 # Copyright (C) 2010-2017 Andrea Fabrizi <andrea.fabrizi@gmail.com>
