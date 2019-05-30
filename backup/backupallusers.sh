@@ -21,8 +21,8 @@ backup_all_users() {
     echo "USER"
     echo "----"
     while read user; do
-        echo "$user"
-        
+        /usr/local/vesta/bin/v-backup-user $user
+
     done < <(grep @ /etc/passwd |cut -f 1 -d :)
 }
 
@@ -33,8 +33,9 @@ backup_all_users() {
 #----------------------------------------------------------#
 
 backup_all_users;
+
 if [ "$dropbox" = "yes" ]; then
-    echo "yes"
+        sudo /usr/local/vesta/bin/send_site_backup_files_to_dropbox.sh
 fi
 
 #----------------------------------------------------------#
