@@ -33,7 +33,7 @@ backup_all_users() {
 #----------------------------------------------------------#
 
 backup_all_users;
-if [ $dropbox = "yes" ]
+if [ "$dropbox" = "yes" ]; then
     echo "yes"
 fi
 
