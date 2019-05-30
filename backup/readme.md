@@ -4,7 +4,9 @@ Create App: https://www.dropbox.com/developers/apps and get Access Token
 
 ```
 # To Install
-curl "https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_uploader.sh" -o dropbox_uploader.sh
+curl "https://raw.githubusercontent.com/maskoid/vestacustom/master/backup/backup.sh" -o backup.sh
+bash backup.sh
+
 
 # Provide Access Token
 /dropbox/dropbox_uploader.sh
