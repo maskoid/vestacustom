@@ -11,15 +11,17 @@
 #----------------------------------------------------------#
 
 # Argument definition
+## Upload All Backup to Dropbox
 dropbox=${1-shell}
+## Remove all Exisiting Backups
 removeall=${2-shell}
 
 # Includes
 source $VESTA/func/main.sh
 
-# SHELL list function
+# Backup All Users function
 backup_all_users() {
-    echo "Backing Up All USERs"
+    echo "Backing Up All Users"
     echo "----"
     while read user; do
         /usr/local/vesta/bin/v-backup-user $user
