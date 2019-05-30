@@ -1,6 +1,6 @@
 #!/bin/bash
 # info: backup all users
-# options: none
+# options: [dropbox]
 #
 # The function for obtaining the list of system users without
 # detailed information.
@@ -9,6 +9,9 @@
 #----------------------------------------------------------#
 #                    Variable&Function                     #
 #----------------------------------------------------------#
+
+# Argument definition
+dropbox=${1-shell}
 
 # Includes
 source $VESTA/func/main.sh
@@ -19,7 +22,7 @@ backup_all_users() {
     echo "----"
     while read user; do
         echo "$user"
-        echo "shell"
+        
     done < <(grep @ /etc/passwd |cut -f 1 -d :)
 }
 
@@ -30,7 +33,9 @@ backup_all_users() {
 #----------------------------------------------------------#
 
 backup_all_users;
-
+if [ $dropbox = "yes" ]
+    echo "yes"
+fi
 
 #----------------------------------------------------------#
 #                       Vesta                              #
