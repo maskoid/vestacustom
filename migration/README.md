@@ -8,5 +8,15 @@ This is for Centos 7. Don't try it if you don't know what it does. Currently in 
 
 ## Backup ALL Users
 
+```
+wget -N https://raw.githubusercontent.com/maskoid/vestacustom/master/migration/backupallusers.sh
+bash backupallusers.sh
+```
 
 ## Restore ALL Users
+Before Restore make sure dropbox is configure
+
+```
+wget -N https://raw.githubusercontent.com/maskoid/vestacustom/master/migration/restoreallusers.sh
+bash restoreallusers.sh
+```
