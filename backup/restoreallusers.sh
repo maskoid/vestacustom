@@ -11,20 +11,25 @@
 #----------------------------------------------------------#
 
 # Argument definition
+## Download All Backup Files from Dropbox if Configured
 dropbox=${1-shell}
+## Remove Everthing From Backup Folder
 removeall=${2-shell}
 
-# Includes
-source $VESTA/func/main.sh
-
-# SHELL list function
+# Restore All User
 restore_all_users() {
     echo "Restoring All Users"
     echo "----"
-    while read user; do
-        /usr/local/vesta/bin/v-backup-user $user
+    rename .tar "" *.tar
 
-    done < <(grep @ /etc/passwd |cut -f 1 -d :)
+    for file in /backup/*; do
+        user="$(basename "$file")"
+        bkfilename=$user".2019-04-24_05-20-47.tar"
+        mv /backup/$user /backup/$bkfilename
+        /usr/local/vesta/bin/v-restore-user $user $bkfilename
+
+    done
+
 }
 
 
@@ -34,7 +39,7 @@ restore_all_users() {
 #----------------------------------------------------------#
 
 if [ "$removeall" = "yes" ]; then
-        rm -rf /backup/* 
+        rm -rf /backup/*
 fi
 
 if [ "$dropbox" = "yes" ]; then
