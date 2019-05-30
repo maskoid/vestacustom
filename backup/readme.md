@@ -13,7 +13,7 @@ bash backup.sh
 Enter your access Token
 
 # To Test Upload 
-/dropbox/dropbox_uploader.sh upload "dropbox_uploader.sh" /
+/dropbox/dropbox_uploader.sh upload "backup.sh" /
 ```
 
 Create Cron Job to run everyday 
