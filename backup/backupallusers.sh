@@ -19,7 +19,7 @@ source $VESTA/func/main.sh
 
 # SHELL list function
 backup_all_users() {
-    echo "USER"
+    echo "Backing Up All USERs"
     echo "----"
     while read user; do
         /usr/local/vesta/bin/v-backup-user $user
