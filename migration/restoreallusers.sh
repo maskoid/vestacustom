@@ -20,6 +20,7 @@ removeall=${2-shell}
 restore_all_users() {
     echo "Restoring All Users"
     echo "----"
+    cd /backup/
     rename .tar "" *.tar
 
     for file in /backup/*; do
