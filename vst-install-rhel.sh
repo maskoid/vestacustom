@@ -476,7 +476,6 @@ fi
 cd /etc/yum.repos.d
 curl https://raw.githubusercontent.com/maskoid/vestacustom/master/yum.repos.d/MariaDB.repo -o MariaDB.repo
 curl https://raw.githubusercontent.com/maskoid/vestacustom/master/yum.repos.d/nginx.repo -o nginx.repo
-wget https://repo.codeit.guru/codeit.el`rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release)`.repo
 
 
 # Installing Vesta repository
