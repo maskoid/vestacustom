@@ -25,6 +25,8 @@ yum-config-manager --disable remi-php54
 sudo yum-config-manager --enable remi-php73
 sudo yum-config-manager --enable remi
 yum -y install php-cli php-imap php-process php-pspell php-xml php-xmlrpc php-pdo php-ldap php-pecl-zip php-common php-mcrypt php-mysqlnd php-gmp php-mbstring php-gd php-tidy php-pecl-memcache php-opcache php-fpm --enablerepo=remi
+sudo systemctl enable php-fpm.service
+sudo systemctl start php-fpm.service
 
 #php 7.3 and 5.6 install, system updated and latest repo downloaded and activated
 
