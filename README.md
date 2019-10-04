@@ -12,7 +12,7 @@ This will install:
 * Apache (2.4)
 * Latest nginx (1.16.0)
 * Latest Mariabd (10.3)
-* Latest PHP 7.3
+* Latest PHP 7.2
 * It will use remi repo for other applications.
 
 ## Install Steps
