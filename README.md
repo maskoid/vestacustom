@@ -1,4 +1,4 @@
-# vestacustom
+# hestiacustom
 Maskoid Customization of HestiaCP
 
 ## Warning
