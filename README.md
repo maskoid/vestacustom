@@ -1,4 +1,4 @@
-# hestiacustom
+# HestiaCP Custom
 Maskoid Customization of HestiaCP
 
 ## Warning
