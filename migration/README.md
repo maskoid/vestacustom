@@ -10,7 +10,6 @@ This is for HestiaCP. Currently in development so things can go ugly. **You have
 ```
 wget -N https://raw.githubusercontent.com/maskoid/vestacustom/master/migration/restore-single-user.sh
 bash restore-single-user.sh
-
 ```
 
 ## Backup ALL Users
