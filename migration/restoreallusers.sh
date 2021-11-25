@@ -27,7 +27,7 @@ restore_all_users() {
         user="$(basename "$file")"
         bkfilename=$user".2019-04-24_05-20-47.tar"
         mv /backup/$user /backup/$bkfilename
-        /usr/local/vesta/bin/v-restore-user $user $bkfilename
+        /usr/local/hestia/bin/v-restore-user $user $bkfilename
 
     done
 
