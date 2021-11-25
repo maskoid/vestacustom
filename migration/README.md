@@ -6,6 +6,7 @@ Maskoid HestiaCP Migration Scripts
 This is for HestiaCP. Currently in development so things can go ugly. **You have been warned!!**
 
 ## Backup Single User
+This shell script only work if you have dropbox backup installer on your server.
 
 ```
 wget -N https://raw.githubusercontent.com/maskoid/vestacustom/master/migration/restore-single-user.sh
