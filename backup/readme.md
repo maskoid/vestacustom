@@ -1,4 +1,4 @@
-# Setup VestaCP Backup with Dropbox
+# Setup HestiaCP Backup with Dropbox
 
 Create App: https://www.dropbox.com/developers/apps and get Access Token
 
