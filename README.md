@@ -1,5 +1,5 @@
 # vestacustom
-Maskoid Customization of VestaCP
+Maskoid Customization of HestiaCP
 
 ## Warning
 
