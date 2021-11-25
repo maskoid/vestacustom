@@ -5,6 +5,14 @@ Maskoid HestiaCP Migration Scripts
 
 This is for Centos 7. Don't try it if you don't know what it does. Currently in development so things can go ugly. **You have been warned!!**
 
+## Backup Single User
+
+```
+cd ~
+wget https://raw.githubusercontent.com/maskoid/vestacustom/master/migration/restore-single-user.sh
+bash restore-single-user.sh
+
+```
 
 ## Backup ALL Users
 
