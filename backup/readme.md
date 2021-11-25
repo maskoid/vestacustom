@@ -10,7 +10,7 @@ bash backup.sh
 
 # Provide Access Token
 /dropbox/dropbox_uploader.sh
-Enter your access Token
+Enter your access Token & follow the step
 
 # To Test Upload 
 /dropbox/dropbox_uploader.sh upload "backup.sh" /
@@ -19,7 +19,7 @@ Enter your access Token
 Create Cron Job to run everyday 
 
 ```
-sudo /usr/local/vesta/bin/send_site_backup_files_to_dropbox.sh
+sudo /usr/local/hestia/bin/send_site_backup_files_to_dropbox.sh
 ```
 
 ## Credit
