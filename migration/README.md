@@ -12,7 +12,7 @@ wget -N https://raw.githubusercontent.com/maskoid/vestacustom/master/migration/b
 bash backupallusers.sh yes yes
 ```
 
-## Backup Single User
+## Restore Single User
 This shell script only work if you have dropbox backup installer on your server.
 
 ```
