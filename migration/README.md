@@ -1,5 +1,5 @@
-# VestaCP Migration
-Maskoid VestaCP Migration Scripts
+# HestiaCP Migration
+Maskoid HestiaCP Migration Scripts
 
 ## Warning
 
